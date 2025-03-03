@@ -61,7 +61,6 @@ class WelcomePage(OriginalWindow):
         ui = Interface(quiz)
 
 
-WelcomePage()
 
 
 
