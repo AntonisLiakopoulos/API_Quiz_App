@@ -1,25 +1,23 @@
 THEME_COLOR = "#375362"
 from quiz_brain import QuizBrain
-
 from tkinter import*
+from main_window import OriginalWindow
 
 
-class Interface():
+
+class Interface(OriginalWindow):
     def __init__(self,quiz_brain: QuizBrain):
+        super().__init__()
+        self.window.withdraw()
         self.quiz = quiz_brain
-        self.window = Tk()
-        self.window.config(padx=20,pady=20,bg=THEME_COLOR)
-        self.window.title("Quizmania")
-        self.canvas = Canvas(bg="white",width=300,height=250)
-        self.question_text = self.canvas.create_text(
-            150,
+        self.canvas = Canvas(bg="white", width=300, height=250)
+        self.question_text = self.canvas.create_text( 150,
             125,
             width=280,
-            text= "Question Text",
-            font=("Arial",20,"italic"),
-            fill= THEME_COLOR)
+            text="Welcome to Quizmania!",
+            font=("Arial", 20),
+            fill=THEME_COLOR)
         self.canvas.grid(column=0,row=1,columnspan=2,pady=50)
-
         self.score_label = Label(text="score: 0",bg=THEME_COLOR,fg="white")
         self.score_label.grid(column=1,row=0,sticky="E")
 
@@ -33,7 +31,7 @@ class Interface():
 
         self.get_next_question()
 
-        self.window.mainloop()
+        #self.window.mainloop()
 
     def get_next_question(self):
         self.canvas.config(bg="white")
